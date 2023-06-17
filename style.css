@@ -1,8 +1,94 @@
 *{
-    margin: none;
-    padding: none;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 body{
-    background-color: cadetblue;
+    background-color: rgb(31, 36, 60);
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    padding: 50px;
+}
+
+.card{
+    border: 2px solid rgb(49, 59, 116);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-color: rgb(39, 45, 75);
+    border-radius: 10px;
+    text-align: center;
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 30px;
+    padding: 50px;
+}
+
+.card:hover{
+    border-color: rgb(68, 82, 163);
+}
+
+.card:hover .pages{
+    background-color: rgb(66, 73, 117);
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 2rem;
+}
+
+.pages{
+    font-size: 20px;
+    font-weight: 600;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    place-self: center;
+    border: 2px solid rgb(49, 59, 116);
+
+    background-color: rgb(47, 52, 85);
+    outline-offset: 2px;
+}
+
+.author{
+    font-weight: 600;
+    margin-top: 6px;
+    color: rgb(151, 168, 255);
+}
+
+.btn{
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    
+    border-radius: 4px;
+    background-color: rgb(65, 78, 153);
+    color: white;
+    padding: 8px 0px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.btn-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.remove{
+    background-color: rgb(161, 38, 38);
+    text-align: center;
 }
