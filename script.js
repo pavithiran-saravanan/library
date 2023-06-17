@@ -1,5 +1,3 @@
-console.log('Working');
-
 // We are going to build a library of books
 // Each book will be a book object
 // We will have an array of books representing the library
@@ -46,15 +44,44 @@ function addBookToLibrary(book){
 
 // Function to iterate over books array and display each book as card
 function displayBooks(){
-    
+    const container = document.querySelector('.books-container');
+    console.log(container);
+    for(let book of books){
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const bookDetails = document.createElement('div');
+        bookDetails.classList.add('book-details')
+
+        const title = document.createElement('div');
+        title.classList.add('title');
+        title.innerText = book.title;
+
+        const author = document.createElement('div');
+        author.classList.add('author');
+        author.innerText = book.author;
+
+        bookDetails.appendChild(title);
+        bookDetails.appendChild(author);
+        
+        
+        card.appendChild(bookDetails);
+        container.appendChild(card);
+    }
 }
 
 let book1 = new Book('Harry Potter', 'J K Rowling', 1529, false);
 let book2 = new Book('City', 'Honda', 1821, false);
 let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam', 399, false);
+let book4 = new Book('Harry Potter', 'J K Rowling', 1529, false);
+let book5 = new Book('City', 'Honda', 1821, false);
+let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam', 399, false);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
+addBookToLibrary(book4);
+addBookToLibrary(book5);
+addBookToLibrary(book6);
 
-console.log(books);
+displayBooks();

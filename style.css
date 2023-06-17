@@ -11,12 +11,12 @@ body{
 }
 
 .container{
-    width: 80%;
+    width: 85%;
     margin: auto;
+    padding-top: 60px;
     display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    padding: 50px;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .card{
