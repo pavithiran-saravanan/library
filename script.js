@@ -45,11 +45,11 @@ function addBookToLibrary(book){
 // Function to iterate over books array and display each book as card
 function displayBooks(){
     const container = document.querySelector('.books-container');
-    console.log(container);
     for(let book of books){
         const card = document.createElement('div');
         card.classList.add('card');
 
+        // Create book details and append to card
         const bookDetails = document.createElement('div');
         bookDetails.classList.add('book-details')
 
@@ -63,9 +63,32 @@ function displayBooks(){
 
         bookDetails.appendChild(title);
         bookDetails.appendChild(author);
-        
-        
         card.appendChild(bookDetails);
+        
+
+        // Create pages and append to card
+        const pages = document.createElement('div');
+        pages.classList.add('pages');
+        pages.innerText = book.pages;
+        card.appendChild(pages);
+
+
+        // Create buttons container and append to card
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('btn-container');
+
+        const read = document.createElement('button');
+        read.classList.add('btn', 'read');
+        read.innerText = 'Read';
+        card.appendChild(pages);
+        const remove = document.createElement('button');
+        remove.classList.add('btn', 'remove');
+        remove.innerText = 'Remove';
+
+        buttonContainer.appendChild(read);
+        buttonContainer.appendChild(remove);
+        card.appendChild(buttonContainer)
+
         container.appendChild(card);
     }
 }
