@@ -115,3 +115,96 @@ body{
     border-radius: 8px;
     color: rgb(151, 168, 255);
 }
+
+.form-background{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    right: 0px;
+    bottom: 0px;
+    background-color: #0000009c;
+    backdrop-filter: blur(3px);
+}
+
+.form-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 8px;
+    background-color: rgb(38, 42, 65);
+    padding: 60px;
+}
+
+input{
+    -webkit-appearance: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 6px 6px 6px 13px;
+    border-radius: 4px;
+    border: 2px solid rgb(74, 83, 126);
+    background-color: transparent;
+    height: 45px;
+}
+
+input:focus{
+    border-color: rgb(85, 107, 216);
+}
+
+.form-main{
+    display: grid;
+    gap: 25px;
+    width: 500px;
+}
+
+.field-container{
+    display: grid;
+    gap: 6px;
+}
+
+.field-container label{
+    font-weight: 500;
+    font-size: 16px;
+    color: rgb(179, 192, 255);
+}
+
+.btn-submit{
+    height: 45px;
+    margin-top: 10px;
+    background-color: rgb(85, 107, 216);
+    border-radius: 4px;
+}
+
+.btn-submit:hover{
+    background-color: rgb(97, 121, 240);
+}
+
+.icon{
+    width: 20px;
+}
+
+.icon-red{
+    width: 100%;
+}
+
+.btn-cancel{
+    border: none;
+    background-color: transparent;
+    height: 18px;
+    width: 18px;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    fill: rgb(255, 113, 113);
+}
+
+.no-scroll{
+    overflow: hidden;
+}
