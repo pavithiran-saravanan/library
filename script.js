@@ -127,25 +127,25 @@ function displayBooks(){
 let book1 = new Book('Harry Potter', 'J K Rowling -- 1', 1529, false);
 let book2 = new Book('City', 'Honda -- 2', 1821, true);
 let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 3', 399, true);
-let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
-let book5 = new Book('City', 'Honda -- 5', 1821, false);
-let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
-let book7 = new Book('Harry Potter', 'J K Rowling -- 7', 1529, true);
-let book8 = new Book('City', 'Honda -- 8', 1821, false);
-let book9 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 9', 399, false);
-let book10 = new Book('City', 'Honda -- 10', 1821, false);
+// let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
+// let book5 = new Book('City', 'Honda -- 5', 1821, false);
+// let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
+// let book7 = new Book('Harry Potter', 'J K Rowling -- 7', 1529, true);
+// let book8 = new Book('City', 'Honda -- 8', 1821, false);
+// let book9 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 9', 399, false);
+// let book10 = new Book('City', 'Honda -- 10', 1821, false);
 
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
-addBookToLibrary(book4);
-addBookToLibrary(book5);
-addBookToLibrary(book6);
-addBookToLibrary(book7);
-addBookToLibrary(book8);
-addBookToLibrary(book9);
-addBookToLibrary(book9);
+// addBookToLibrary(book4);
+// addBookToLibrary(book5);
+// addBookToLibrary(book6);
+// addBookToLibrary(book7);
+// addBookToLibrary(book8);
+// addBookToLibrary(book9);
+// addBookToLibrary(book9);
 
 displayBooks();
 
