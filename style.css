@@ -30,14 +30,14 @@ body{
     text-align: center;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    padding: 50px;
-    gap: 40px;
+    padding: 30px;
+    gap: 60px;
     word-break: break-all;
 }
 
 .card:hover{
     border: 2px solid rgb(68, 82, 163);
-    /* transform: scale(1.01); */
+    transform: scale(1.01);
     transition: all .2s;
     background-color: rgb(35, 41, 68);
 
@@ -45,7 +45,7 @@ body{
 
 .card:hover .pages{
     background-color: rgb(66, 73, 117);
-    transform: scale(1.2);
+    transform: scale(1.2); 
     transition: all .2s;
 }
 
@@ -100,12 +100,12 @@ body{
 }
 
 .remove{
-    background-color: rgb(161, 38, 38);
+    background-color: rgb(131, 46, 46);
     text-align: center;
 }
 
 .remove:hover{
-    background-color: rgb(184, 46, 46);
+    background-color: rgb(172, 58, 58);
     transition: all .2s;
 }
 
@@ -152,7 +152,7 @@ body{
     padding: 60px;
 }
 
-input{
+input[type = 'text'], input[type = 'tel']{
     -webkit-appearance: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -167,7 +167,7 @@ input{
     height: 45px;
 }
 
-input:focus{
+input[type = 'text'], input[type = 'tel']{
     border-color: rgb(85, 107, 216);
 }
 
@@ -182,10 +182,48 @@ input:focus{
     gap: 6px;
 }
 
-.field-container label{
+.field-container label, .read-container label{
     font-weight: 500;
     font-size: 16px;
     color: rgb(179, 192, 255);
+}
+
+.read-container{
+    display: grid;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.read-container input[type = 'radio']{
+    width: auto;
+    height: auto;
+    accent-color: rgb(151, 168, 255);
+}
+
+.read-status{
+    margin-bottom: 10px;
+}
+
+input[type = 'radio']:checked + label{
+    color: rgb(151, 168, 255);
+}
+
+.yes-container, .no-container{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-content: center;
+    gap: 15px;
+}
+
+.yes-container input, .no-container input{
+    place-self: center;
+}
+
+
+.yes-container label, .no-container label{
+    color: white;
+    font-size: 14px;
 }
 
 .btn-submit{
@@ -247,7 +285,7 @@ input:focus{
 }
 
 .display{
-    display: none;
+    /* display: none; */
 }
 
 .read{

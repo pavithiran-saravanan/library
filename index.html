@@ -29,6 +29,19 @@
                 <label for="pages">Pages *</label>
                 <input type="tel" min="1" id="pages" name="pages" required pattern="[0-9]+" title="Only positive numbers are accepted">
             </div>
+            <div class="read-container">
+                <label for="read-status">Have you read this book ?</label>
+
+                <div class="yes-container">
+                    <input type="radio" name="read-status" id="read-status-yes" checked required>
+                    <label for="read-status-yes" class="yes" >Yes</label>
+                </div>
+                
+                <div class="no-container">
+                    <input type="radio" name="read-status" id="read-status-no">
+                    <label for="read-status-no" class="no">No</label>
+                </div>
+            </div>
             <button class="btn btn-submit" type="submit">Add Book</button>
         </form>
     </div>
