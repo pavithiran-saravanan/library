@@ -37,7 +37,7 @@ body{
 
 .card:hover{
     border: 2px solid rgb(68, 82, 163);
-    transform: scale(1.01);
+    /* transform: scale(1.01); */
     transition: all .2s;
     background-color: rgb(35, 41, 68);
 
@@ -45,7 +45,7 @@ body{
 
 .card:hover .pages{
     background-color: rgb(66, 73, 117);
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: all .2s;
 }
 
@@ -150,7 +150,6 @@ body{
     border-radius: 8px;
     background-color: rgb(38, 42, 65);
     padding: 60px;
-    transition: all 2s;
 }
 
 input{
@@ -249,4 +248,8 @@ input:focus{
 
 .display{
     display: none;
+}
+
+.read{
+    content: "";
 }

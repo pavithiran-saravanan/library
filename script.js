@@ -45,6 +45,7 @@ function addBookToLibrary(book){
 // Function to iterate over books array and display each book as card
 function displayBooks(){
     const container = document.querySelector('.books-container');
+    container.innerHTML = '';
     if(books.length === 0){
         document.querySelector('.empty-container').classList.remove('display');
     }
@@ -85,7 +86,7 @@ function displayBooks(){
 
         const read = document.createElement('button');
         read.classList.add('btn', 'read');
-        read.innerText = 'Read';
+        read.innerText = book.read ? 'Unread' : 'Read';
         card.appendChild(pages);
         const remove = document.createElement('button');
         remove.classList.add('btn', 'remove');
@@ -109,6 +110,17 @@ function displayBooks(){
             displayBooks();
         });
     });
+
+    // Add event listener to read buttons, to toggle read status
+    let readButtons = document.querySelectorAll('.read');
+    Array.from(readButtons).forEach(readButton => { 
+        readButton.addEventListener('click', e=>{
+            const indexOfBook = readButton.parentElement.parentElement.getAttribute('data-index');
+            readButton.innerText = books[indexOfBook].read ? 'Unread' : 'Read';
+            books[indexOfBook].read = !books[indexOfBook].read;
+            displayBooks();
+        });
+    });
 }
 
 let book1 = new Book('Harry Potter', 'J K Rowling -- 1', 1529, false);
@@ -118,12 +130,12 @@ let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
 let book5 = new Book('City', 'Honda -- 5', 1821, false);
 let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
 
-// addBookToLibrary(book1);
-// addBookToLibrary(book2);
-// addBookToLibrary(book3);
-// addBookToLibrary(book4);
-// addBookToLibrary(book5);
-// addBookToLibrary(book6);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3);
+addBookToLibrary(book4);
+addBookToLibrary(book5);
+addBookToLibrary(book6);
 
 displayBooks();
 
