@@ -108,3 +108,18 @@ addBookToLibrary(book5);
 addBookToLibrary(book6);
 
 displayBooks();
+
+const addBookButton = document.querySelector('.add-book');
+const cancelButton = document.querySelector('.btn-cancel');
+const body = document.querySelector('body');
+const formBackground = document.querySelector('.form-background');
+const formContainer = document.querySelector('.form-container');
+
+addBookButton.addEventListener('click', toggleFormOverlay);
+cancelButton.addEventListener('click', toggleFormOverlay);
+
+function toggleFormOverlay(){
+    body.classList.toggle('no-scroll');
+    formBackground.classList.toggle('display');
+    formContainer.classList.toggle('display');
+}

@@ -208,3 +208,7 @@ input:focus{
 .no-scroll{
     overflow: hidden;
 }
+
+.display{
+    display: none;
+}
