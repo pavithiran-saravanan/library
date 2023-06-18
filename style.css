@@ -17,6 +17,7 @@ body{
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
 }
 
 .card{
@@ -26,11 +27,11 @@ body{
     background-color: rgb(39, 45, 75);
     border-radius: 10px;
     text-align: center;
-
     display: grid;
-    grid-template-rows: 1fr auto;
-    gap: 30px;
+    grid-template-rows: auto 1fr auto;
     padding: 50px;
+    gap: 30px;
+    word-break: break-all;
 }
 
 .card:hover{
@@ -42,9 +43,8 @@ body{
 }
 
 .title{
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: 800;
-    line-height: 2rem;
 }
 
 .pages{
@@ -55,13 +55,12 @@ body{
     height: 80px;
 
     border-radius: 100%;
+    border: 2px solid rgb(49, 59, 116);
+    background-color: rgb(47, 52, 85);
+
     display: grid;
     place-content: center;
     place-self: center;
-    border: 2px solid rgb(49, 59, 116);
-
-    background-color: rgb(47, 52, 85);
-    outline-offset: 2px;
 }
 
 .author{
