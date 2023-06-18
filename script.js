@@ -124,9 +124,9 @@ function displayBooks(){
     });
 }
 
-let book1 = new Book('Harry Potter', 'J K Rowling -- 1', 1529, false);
-let book2 = new Book('City', 'Honda -- 2', 1821, true);
-let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 3', 399, true);
+let book1 = new Book('The Thirty-Nine Steps', 'John Buchan', 138, false);
+let book2 = new Book('Life After Life', 'Kate Atkinson', 662, true);
+let book3 = new Book('David Copperfield', 'Charles Dickens', 1057, true);
 // let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
 // let book5 = new Book('City', 'Honda -- 5', 1821, false);
 // let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
