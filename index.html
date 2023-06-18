@@ -27,7 +27,7 @@
             </div>
             <div class="field-container">
                 <label for="pages">Pages *</label>
-                <input type="tel" id="pages" name="pages" required pattern="[0-9]+" title="Only positive numbers are accepted">
+                <input type="tel" min="1" id="pages" name="pages" required pattern="[0-9]+" title="Only positive numbers are accepted">
             </div>
             <button class="btn btn-submit" type="submit">Add Book</button>
         </form>
@@ -38,7 +38,7 @@
     </div>
     <div class="books-container container">
         <!-- <div class="book card">
-            <div class="book-details">
+            <div class="book-details"> 
                 <div class="title ">Wings of Fire</div>
                 <div class="author ">A P J Abdul Kalam</div>
             </div>
@@ -48,6 +48,10 @@
                 <button class="btn remove">Remove</button>
             </div>
         </div> -->
+    </div>
+    <div class="empty-container display">
+        <img class="empty" src="./icons/undraw_road_to_knowledge_m8s0 (1).svg" alt="">
+        <div class="empty-text">Library is empty :(</div>
     </div>
 </body>
 </html>

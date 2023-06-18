@@ -45,8 +45,13 @@ function addBookToLibrary(book){
 // Function to iterate over books array and display each book as card
 function displayBooks(){
     const container = document.querySelector('.books-container');
-    container.textContent = '';
-    for(let book of books){
+    if(books.length === 0){
+        document.querySelector('.empty-container').classList.remove('display');
+    }
+    else{
+        document.querySelector('.empty-container').classList.add('display');
+    }
+    books.forEach((book, index) => {
         const card = document.createElement('div');
         card.classList.add('card');
 
@@ -90,23 +95,35 @@ function displayBooks(){
         buttonContainer.appendChild(remove);
         card.appendChild(buttonContainer)
 
+        card.setAttribute('data-index', `${index}`);
         container.appendChild(card);
-    }
+    });
+    
+
+    // Add remove book functionality
+    let removeButtons = document.querySelectorAll('.remove');
+    Array.from(removeButtons).forEach(removeButton => { 
+        removeButton.addEventListener('click', e=>{
+            const indexOfBook = removeButton.parentElement.parentElement.getAttribute('data-index');
+            books.splice(indexOfBook, 1);
+            displayBooks();
+        });
+    });
 }
 
-let book1 = new Book('Harry Potter', 'J K Rowling', 1529, false);
-let book2 = new Book('City', 'Honda', 1821, false);
-let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam', 399, false);
-let book4 = new Book('Harry Potter', 'J K Rowling', 1529, false);
-let book5 = new Book('City', 'Honda', 1821, false);
-let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam', 399, false);
+let book1 = new Book('Harry Potter', 'J K Rowling -- 1', 1529, false);
+let book2 = new Book('City', 'Honda -- 2', 1821, false);
+let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 3', 399, false);
+let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
+let book5 = new Book('City', 'Honda -- 5', 1821, false);
+let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
-addBookToLibrary(book5);
-addBookToLibrary(book6);
+// addBookToLibrary(book1);
+// addBookToLibrary(book2);
+// addBookToLibrary(book3);
+// addBookToLibrary(book4);
+// addBookToLibrary(book5);
+// addBookToLibrary(book6);
 
 displayBooks();
 
