@@ -45,6 +45,7 @@ function addBookToLibrary(book){
 // Function to iterate over books array and display each book as card
 function displayBooks(){
     const container = document.querySelector('.books-container');
+    container.textContent = '';
     for(let book of books){
         const card = document.createElement('div');
         card.classList.add('card');
@@ -122,4 +123,28 @@ function toggleFormOverlay(){
     body.classList.toggle('no-scroll');
     formBackground.classList.toggle('display');
     formContainer.classList.toggle('display');
+
+    const title = document.querySelector('#title').value = '';
+    const author = document.querySelector('#author').value = '';
+    const pages = document.querySelector('#pages').value = '';
 }
+
+const submitButton = document.querySelector('.btn-submit');
+
+const form = document.querySelector('.form-main');
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    if(form.checkValidity() === false){
+        form.reportValidity();
+        return;
+    }
+
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+
+    let book = new Book(title, author, pages, false);
+    addBookToLibrary(book);
+    displayBooks();
+    toggleFormOverlay();
+});
