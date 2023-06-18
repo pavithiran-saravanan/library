@@ -117,10 +117,9 @@ body{
 }
 
 .form-background{
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
-    height: 100%;
     right: 0px;
     bottom: 0px;
     background-color: #0000009c;
