@@ -86,7 +86,9 @@ function displayBooks(){
 
         const read = document.createElement('button');
         read.classList.add('btn', 'read');
-        read.innerText = book.read ? 'Unread' : 'Read';
+
+        read.innerText = book.isRead ? 'Unread' : 'Read';
+
         card.appendChild(pages);
         const remove = document.createElement('button');
         remove.classList.add('btn', 'remove');
@@ -116,19 +118,23 @@ function displayBooks(){
     Array.from(readButtons).forEach(readButton => { 
         readButton.addEventListener('click', e=>{
             const indexOfBook = readButton.parentElement.parentElement.getAttribute('data-index');
-            readButton.innerText = books[indexOfBook].read ? 'Unread' : 'Read';
-            books[indexOfBook].read = !books[indexOfBook].read;
-            displayBooks();
+            books[indexOfBook].isRead = !books[indexOfBook].isRead;
+            readButton.innerText = books[indexOfBook].isRead ? 'Unread' : 'Read';
         });
     });
 }
 
 let book1 = new Book('Harry Potter', 'J K Rowling -- 1', 1529, false);
-let book2 = new Book('City', 'Honda -- 2', 1821, false);
-let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 3', 399, false);
+let book2 = new Book('City', 'Honda -- 2', 1821, true);
+let book3 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 3', 399, true);
 let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
 let book5 = new Book('City', 'Honda -- 5', 1821, false);
 let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
+let book7 = new Book('Harry Potter', 'J K Rowling -- 7', 1529, true);
+let book8 = new Book('City', 'Honda -- 8', 1821, false);
+let book9 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 9', 399, false);
+let book10 = new Book('City', 'Honda -- 10', 1821, false);
+
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -136,6 +142,10 @@ addBookToLibrary(book3);
 addBookToLibrary(book4);
 addBookToLibrary(book5);
 addBookToLibrary(book6);
+addBookToLibrary(book7);
+addBookToLibrary(book8);
+addBookToLibrary(book9);
+addBookToLibrary(book9);
 
 displayBooks();
 
@@ -171,8 +181,9 @@ form.addEventListener('submit', (e)=>{
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
+    const isRead = document.querySelector('#read-status-yes')['checked'] ? true : false;
 
-    let book = new Book(title, author, pages, false);
+    let book = new Book(title, author, pages, isRead);
     addBookToLibrary(book);
     displayBooks();
     toggleFormOverlay();
