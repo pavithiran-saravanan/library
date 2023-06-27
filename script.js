@@ -23,8 +23,7 @@ For this we need to associate dom elements to the book object. One easy solution
 
 // Use Classes instead of object constructors
 
-// Array of books
-let books = [];
+
 
 // // Book object constructor
 // function Book(title, author, pages, isRead){
@@ -90,102 +89,106 @@ class Book {
     }
 };
 
-// Function to add a book to library 
-function addBookToLibrary(book){
-    books.push(book);
-}
+// Write a Library Module
+const Library = (function(){
+    // Array of books
+    let books = [];
 
-// Function to iterate over books array and display each book as card
-function displayBooks(){
-    const container = document.querySelector('.books-container');
-    container.innerHTML = '';
-    if(books.length === 0){
-        document.querySelector('.empty-container').classList.remove('display');
+    // Method to add a new book to library 
+    function addBookToLibrary(book){
+        books.push(book);
     }
-    else{
-        document.querySelector('.empty-container').classList.add('display');
-    }
-    books.forEach((book, index) => {
-        const card = document.createElement('div');
-        card.classList.add('card');
 
-        // Create book details and append to card
-        const bookDetails = document.createElement('div');
-        bookDetails.classList.add('book-details')
+    // Function to iterate over books array and display each book as card
+    function displayBooks(){
+        const container = document.querySelector('.books-container');
+        container.innerHTML = '';
+        if(books.length === 0){
+            document.querySelector('.empty-container').classList.remove('display');
+        }
+        else{
+            document.querySelector('.empty-container').classList.add('display');
+        }
+        books.forEach((book, index) => {
+            const card = document.createElement('div');
+            card.classList.add('card');
 
-        const title = document.createElement('div');
-        title.classList.add('title');
-        title.innerText = book.title;
+            // Create book details and append to card
+            const bookDetails = document.createElement('div');
+            bookDetails.classList.add('book-details')
 
-        const author = document.createElement('div');
-        author.classList.add('author');
-        author.innerText = book.author;
+            const title = document.createElement('div');
+            title.classList.add('title');
+            title.innerText = book.title;
 
-        bookDetails.appendChild(title);
-        bookDetails.appendChild(author);
-        card.appendChild(bookDetails);
+            const author = document.createElement('div');
+            author.classList.add('author');
+            author.innerText = book.author;
+
+            bookDetails.appendChild(title);
+            bookDetails.appendChild(author);
+            card.appendChild(bookDetails);
+
+            // Create pages and append to card
+            const pages = document.createElement('div');
+            pages.classList.add('pages');
+            pages.innerText = book.pages;
+            card.appendChild(pages);
+
+            // Create buttons container and append to card
+            const buttonContainer = document.createElement('div');
+            buttonContainer.classList.add('btn-container');
+
+            const read = document.createElement('button');
+            read.classList.add('btn', 'read');
+
+            read.innerText = book.isRead ? 'Unread' : 'Read';
+
+            card.appendChild(pages);
+            const remove = document.createElement('button');
+            remove.classList.add('btn', 'remove');
+            remove.innerText = 'Remove';
+
+            buttonContainer.appendChild(read);
+            buttonContainer.appendChild(remove);
+            card.appendChild(buttonContainer)
+
+            card.setAttribute('data-index', `${index}`);
+            container.appendChild(card);
+        });
         
-
-        // Create pages and append to card
-        const pages = document.createElement('div');
-        pages.classList.add('pages');
-        pages.innerText = book.pages;
-        card.appendChild(pages);
-
-
-        // Create buttons container and append to card
-        const buttonContainer = document.createElement('div');
-        buttonContainer.classList.add('btn-container');
-
-        const read = document.createElement('button');
-        read.classList.add('btn', 'read');
-
-        read.innerText = book.isRead ? 'Unread' : 'Read';
-
-        card.appendChild(pages);
-        const remove = document.createElement('button');
-        remove.classList.add('btn', 'remove');
-        remove.innerText = 'Remove';
-
-        buttonContainer.appendChild(read);
-        buttonContainer.appendChild(remove);
-        card.appendChild(buttonContainer)
-
-        card.setAttribute('data-index', `${index}`);
-        container.appendChild(card);
-    });
-    
-
-    // Add remove book functionality
-    let removeButtons = document.querySelectorAll('.remove');
-    Array.from(removeButtons).forEach(removeButton => { 
-        removeButton.addEventListener('click', e=>{
-            const indexOfBook = removeButton.parentElement.parentElement.getAttribute('data-index');
-            books.splice(indexOfBook, 1);
-            displayBooks();
+        // Add remove book functionality
+        let removeButtons = document.querySelectorAll('.remove');
+        Array.from(removeButtons).forEach(removeButton => { 
+            removeButton.addEventListener('click', e=>{
+                const indexOfBook = removeButton.parentElement.parentElement.getAttribute('data-index');
+                books.splice(indexOfBook, 1);
+                displayBooks();
+            });
         });
-    });
 
-    // Add event listener to read buttons, to toggle read status
-    let readButtons = document.querySelectorAll('.read');
-    Array.from(readButtons).forEach(readButton => { 
-        readButton.addEventListener('click', e=>{
-            const indexOfBook = readButton.parentElement.parentElement.getAttribute('data-index');
-            books[indexOfBook].isRead = !books[indexOfBook].isRead;
-            readButton.innerText = books[indexOfBook].isRead ? 'Unread' : 'Read';
+        // Add event listener to read buttons, to toggle read status
+        let readButtons = document.querySelectorAll('.read');
+        Array.from(readButtons).forEach(readButton => { 
+            readButton.addEventListener('click', e=>{
+                const indexOfBook = readButton.parentElement.parentElement.getAttribute('data-index');
+                books[indexOfBook].isRead = !books[indexOfBook].isRead;
+                readButton.innerText = books[indexOfBook].isRead ? 'Unread' : 'Read';
+            });
         });
-    });
-}
+    }
+
+    return {addBookToLibrary, displayBooks};
+})();
 
 let book1 = new Book('The Thirty-Nine Steps', 'John Buchan', 138, false);
 let book2 = new Book('Life After Life', 'Kate Atkinson', 662, true);
 let book3 = new Book('David Copperfield', 'Charles Dickens', 1057, true);
+Library.addBookToLibrary(book1);
+Library.addBookToLibrary(book2);
+Library.addBookToLibrary(book3);
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-
-displayBooks();
+Library.displayBooks();
 
 const addBookButton = document.querySelector('.add-book');
 const cancelButton = document.querySelector('.btn-cancel');
@@ -196,18 +199,18 @@ const formContainer = document.querySelector('.form-container');
 addBookButton.addEventListener('click', toggleFormOverlay);
 cancelButton.addEventListener('click', toggleFormOverlay);
 
+// Helper function that toggles the new book form
 function toggleFormOverlay(){
     body.classList.toggle('no-scroll');
     formBackground.classList.toggle('display');
     formContainer.classList.toggle('display');
-
     const title = document.querySelector('#title').value = '';
     const author = document.querySelector('#author').value = '';
     const pages = document.querySelector('#pages').value = '';
 }
 
+// Adding event listerner to submit button in new book form. Handles addition of new book to library and dispaly in page.
 const submitButton = document.querySelector('.btn-submit');
-
 const form = document.querySelector('.form-main');
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -222,7 +225,7 @@ form.addEventListener('submit', (e)=>{
     const isRead = document.querySelector('#read-status-yes')['checked'] ? true : false;
 
     let book = new Book(title, author, pages, isRead);
-    addBookToLibrary(book);
-    displayBooks();
+    Library.addBookToLibrary(book);
+    Library.displayBooks();
     toggleFormOverlay();
 });
