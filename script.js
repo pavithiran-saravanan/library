@@ -21,21 +21,74 @@ For this we need to associate dom elements to the book object. One easy solution
 
 */
 
+// Use Classes instead of object constructors
+
 // Array of books
 let books = [];
 
-// Book object constructor
-function Book(title, author, pages, isRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}
+// // Book object constructor
+// function Book(title, author, pages, isRead){
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.isRead = isRead;
+// }
 
-// Add toggleRead method to Book's prototype
-Book.prototype.toggleRead = function(){
-    this.isRead = !this.isRead;
-}
+// // Add toggleRead method to Book's prototype
+// Book.prototype.toggleRead = function(){
+//     this.isRead = !this.isRead;
+// }
+
+// Replace Book Object Constructor with Book Class
+class Book {
+    // Private Fields
+    #title;
+    #author;
+    #pages;
+    #isRead;
+
+    // Public Constructor
+    constructor(title, author, pages, isRead){
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.#isRead = isRead;
+    }
+
+    // Public Setters
+    set title(title){
+        this.#title = title;
+    };
+    set author(author){
+        this.#author = author;
+    };
+    set pages(pages){
+        this.#pages = pages;
+    };
+    set isRead(isRead){
+        this.#isRead = isRead;
+    };
+
+    // Public Getters
+    get title(){
+        return this.#title
+    };
+    get author(){
+        return this.#author
+    };
+    get pages(){
+        return this.#pages
+    };
+    get isRead(){
+        return this.#isRead
+    };
+
+    // Public Method
+    toggleRead(){
+        console.log(this);
+        this.#isRead = !this.#isRead;
+    }
+};
 
 // Function to add a book to library 
 function addBookToLibrary(book){
@@ -127,25 +180,10 @@ function displayBooks(){
 let book1 = new Book('The Thirty-Nine Steps', 'John Buchan', 138, false);
 let book2 = new Book('Life After Life', 'Kate Atkinson', 662, true);
 let book3 = new Book('David Copperfield', 'Charles Dickens', 1057, true);
-// let book4 = new Book('Harry Potter', 'J K Rowling -- 4', 1529, false);
-// let book5 = new Book('City', 'Honda -- 5', 1821, false);
-// let book6 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 6', 399, false);
-// let book7 = new Book('Harry Potter', 'J K Rowling -- 7', 1529, true);
-// let book8 = new Book('City', 'Honda -- 8', 1821, false);
-// let book9 = new Book('Wings of Fire', 'A P J Abdul Kalam -- 9', 399, false);
-// let book10 = new Book('City', 'Honda -- 10', 1821, false);
-
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
-// addBookToLibrary(book4);
-// addBookToLibrary(book5);
-// addBookToLibrary(book6);
-// addBookToLibrary(book7);
-// addBookToLibrary(book8);
-// addBookToLibrary(book9);
-// addBookToLibrary(book9);
 
 displayBooks();
 
