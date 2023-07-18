@@ -12,7 +12,7 @@ Check out the live demo of the project here https://pavithiran-saravanan.github.
 # Features
 - Add/Remove books
 - Mark books as read/unread
-- Optimized for mobile screens
+- Responsive
 
 # Screenshots
 ![image](https://github.com/pavithiran-saravanan/library/assets/63770646/d9927f07-3132-480a-b15c-426f859239b3)
